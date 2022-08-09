@@ -15,9 +15,9 @@ pipeline {
     stage('Sonar Scanner Coverage') {
            steps{
                       script{
-      
+       withSonarQubeEnv('sonarserver') { 
         bat "npm run sonar"
-       
+       }
         timeout(time: 1, unit: 'HOURS') {
 			      def qg = waitForQualityGate()
 				      if (qg.status != 'OK') {

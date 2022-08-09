@@ -21,7 +21,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') {
 			      def qg = waitForQualityGate()
 				      if (qg.status == 'OK') {
-   emailext attachLog: true, body: "${currentBuild.result} :  ${BUILD_URL}", subject: "Build Notification: ${env.JOB_BASE_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'firas.mhalla@advyteam.com'
+   emailext attachLog: true, body: "${currentBuild.result} :  ${BUILD_URL}", subject: "Build Notification: ${env.JOB_BASE_NAME}-Build# ${BUILD_NUMBER} Still Unstable", to: 'firas.mhalla@advyteam.com'
 					   error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				      }
                     		}

@@ -30,11 +30,12 @@ pipeline {
     }
            }
            }
-   
+    
 
                     stage('build && test succed  email notification')	{
+                        steps{
                      mail bcc: '', body: 'Your image application is ready', cc: '', from: '', replyTo: '', subject: 'Build succed', to: 'firas.mhalla@advyteam.com'
-   
+                    }
                  }
    
 }

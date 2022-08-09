@@ -2,6 +2,7 @@
 pipeline {
     agent any
      stages{
+        try{
           stage ('Install dependency') {
            steps{
                       script{
@@ -21,10 +22,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') {
 			      def qg = waitForQualityGate()
 				      if (qg.status != 'OK') {
-                        stage('Email test-fail notification '){
-                            mail bcc: '', body: 'Your sonarQube test has failed ', cc: '', from: '', replyTo: '', subject: 'Test failed', to: 'firas.mhalla@advyteam.com'
-
-                        }
+                        
 					   error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				      }
                     		}
@@ -32,18 +30,15 @@ pipeline {
     }
            }
            }
-       stage('build')
-                {
-              steps{
-                  script{
-                  bat 'docker build C:/Users/dell/.jenkins/workspace/AngularPipeline -t 123anz/jenkins:FrontEndImage'
-		  withCredentials([string(credentialsId: 'dockerPASS', variable: 'docker_password')]) {			    
-				  bat 'docker login -u 123anz -p ~$cd,)Vcs,-4h=Q'
-				  bat 'docker push 123anz/jenkins:FrontEndImage'
-			}
-                       }
-                    }
-                 }	
+    
+                
    
+}catch(err){
+     mail bcc: '', body: '${err}', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'firas.mhalla@advyteam.com'
+
+     }
+      mail bcc: '', body: 'Your image application is ready', cc: '', from: '', replyTo: '', subject: 'Build succed', to: 'firas.mhalla@advyteam.com'
+   
+     }
 }
-}
+

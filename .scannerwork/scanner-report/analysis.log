@@ -19,12 +19,13 @@ SonarQube plugins:
 Global server settings:
   - sonar.core.id=147B411E-AYIrjJ9OQHQ84pnrVUWj
   - sonar.core.startTime=2022-08-09T00:34:15+0100
-  - sonar.forceAuthentication=false
+  - sonar.forceAuthentication=true
   - sonar.validateWebhooks=false
 Project server settings:
 Project scanner properties:
   - sonar.exclusions=**/node_modules/**
   - sonar.host.url=http://localhost:9000
+  - sonar.login=******
   - sonar.projectBaseDir=C:\Angular\AdvyteamFrontEnd\AvyteamFront
   - sonar.projectKey=avyteamfront
   - sonar.projectName=avyteamfront

@@ -1,0 +1,35 @@
+
+node {
+    stage ('Install dependency') {
+        bat 'npm install'
+    } 
+    stage ('Testing Stage') {
+        bat 'npx ng test --no-watch --code-coverage'
+    }
+    
+    stage('Sonar Scanner Coverage') {
+       withSonarQubeEnv('sonarserver') { 
+        bat "npm run sonar"
+       }
+        timeout(time: 1, unit: 'HOURS') {
+			      def qg = waitForQualityGate()
+				      if (qg.status != 'OK') {
+					   error "Pipeline aborted due to quality gate failure: ${qg.status}"
+				      }
+                    		}
+		    	    bat 'echo echo tested succesfully'
+    }
+       stage('build')
+                {
+              steps{
+                  script{
+                  bat 'docker build C:\Angular\AdvyteamFrontEnd\AvyteamFront\src\Dockerfile -t 123anz/jenkins:FrontEndImage'
+		  withCredentials([string(credentialsId: 'dockerPASS', variable: 'docker_password')]) {			    
+				  bat 'docker login -u 123anz -p ~$cd,)Vcs,-4h=Q'
+				  bat 'docker push 123anz/jenkins:FrontEndImage'
+			}
+                       }
+                    }
+                 }	
+   
+}

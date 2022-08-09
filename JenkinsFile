@@ -34,7 +34,7 @@ pipeline {
 
                     stage('build && test succed  email notification')	{
                         steps{
-                     mail bcc: '', body: ' Your image application is ready', cc: '', from: '', replyTo: '', subject: '${env.JOB_BASE_NAME} - Build N°: ${BUILD_NUMBER}  Successfull', to: 'firas.mhalla@advyteam.com'
+                     mail bcc: '', body: ' Your image application is ready', cc: '', from: '', replyTo: '', subject: "${env.JOB_BASE_NAME} - Build N°: ${BUILD_NUMBER}  Successfull", to: 'firas.mhalla@advyteam.com'
                     }
                  }
    

@@ -29,7 +29,18 @@ pipeline {
     }
            }
            }
-    
+     stage('build')
+                {
+              steps{
+                  script{
+                  bat 'docker build C:/Angular/AdvyteamFrontEnd/AvyteamFront/Dockerfile -t 123anz/jenkins:FrontEndImage'
+		  withCredentials([string(credentialsId: 'dockerPASS', variable: 'docker_password')]) {			    
+				  bat 'docker login -u 123anz -p ~$cd,)Vcs,-4h=Q'
+				  bat 'docker push 123anz/jenkins:FrontEndImage'
+			}
+                       }
+                    }
+                 }	
 
                     stage('build && test succed  email notification')	{
                         steps{

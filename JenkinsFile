@@ -21,7 +21,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') {
 			      def qg = waitForQualityGate()
 				      if (qg.status == 'OK') {
-                         mail bcc: '', attachLog: true,body: "${currentBuild.result} :  ${BUILD_URL}", compressLog: true, cc: '', from: '', replyTo: '', subject: "Build Notification: ${env.JOB_BASE_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'firas.mhalla@advyteam.com'
+                         mail bcc: '', attachlog: true,body: "${currentBuild.result} :  ${BUILD_URL}", cc: '', from: '', replyTo: '', subject: "Build Notification: ${env.JOB_BASE_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'firas.mhalla@advyteam.com'
    
 					   error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				      }

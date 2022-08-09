@@ -11,6 +11,7 @@ export class ProjetService {
   constructor(private http: HttpClient) { }
   getAll(): Observable<Projet[]> {
     return this.http.get<Projet[]>(`${baseUrl}/AfficheProjets`);
+    
   }
 
   create(data: any): Observable<any> {

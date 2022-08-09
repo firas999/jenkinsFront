@@ -1,0 +1,39 @@
+SonarQube plugins:
+  - Python Code Quality and Security 3.13.0.9611 (python)
+  - Go Code Quality and Security 1.9.0.3429 (go)
+  - JaCoCo 1.1.1.1157 (jacoco)
+  - Kotlin Code Quality and Security 2.9.0.1147 (kotlin)
+  - IaC Code Quality and Security 1.7.0.2012 (iac)
+  - JavaScript/TypeScript/CSS Code Quality and Security 9.3.0.18033 (javascript)
+  - Ruby Code Quality and Security 1.9.0.3429 (ruby)
+  - Scala Code Quality and Security 1.9.0.3429 (sonarscala)
+  - C# Code Quality and Security 8.40.0.48530 (csharp)
+  - Java Code Quality and Security 7.12.0.29739 (java)
+  - HTML Code Quality and Security 3.6.0.3106 (web)
+  - Flex Code Quality and Security 2.7.0.2865 (flex)
+  - XML Code Quality and Security 2.5.0.3376 (xml)
+  - PHP Code Quality and Security 3.23.1.8766 (php)
+  - Text file Code Quality and Security 1.1.0.282 (text)
+  - VB.NET Code Quality and Security 8.40.0.48530 (vbnet)
+  - Configuration detection fot Code Quality and Security 1.2.0.267 (config)
+Global server settings:
+  - sonar.core.id=147B411E-AYIrjJ9OQHQ84pnrVUWj
+  - sonar.core.startTime=2022-08-09T00:34:15+0100
+  - sonar.forceAuthentication=false
+  - sonar.validateWebhooks=false
+Project server settings:
+Project scanner properties:
+  - sonar.exclusions=**/node_modules/**
+  - sonar.host.url=http://localhost:9000
+  - sonar.projectBaseDir=C:\Angular\AdvyteamFrontEnd\AvyteamFront
+  - sonar.projectKey=avyteamfront
+  - sonar.projectName=avyteamfront
+  - sonar.projectVersion=1.0
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=3.1.0.1141
+  - sonar.sourceEncoding=UTF-8
+  - sonar.sources=src
+  - sonar.test.inclusions=**/*.spec.ts
+  - sonar.tests=src
+  - sonar.typescript.lcov.reportPaths=coverage/avyteamfront/lcov.info
+  - sonar.working.directory=C:\Angular\AdvyteamFrontEnd\AvyteamFront\.scannerwork

@@ -1,5 +1,7 @@
 
-node {
+pipeline {
+    agent any
+     stages{
     stage ('Install dependency') {
         bat 'npm install'
     } 
@@ -32,4 +34,5 @@ node {
                     }
                  }	
    
+}
 }

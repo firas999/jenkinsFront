@@ -21,6 +21,10 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') {
 			      def qg = waitForQualityGate()
 				      if (qg.status != 'OK') {
+                        stage('Email test-fail notification '){
+                            mail bcc: '', body: 'Your sonarQube test has failed ', cc: '', from: '', replyTo: '', subject: 'Test failed', to: 'firas.mhalla@advyteam.com'
+
+                        }
 					   error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				      }
                     		}

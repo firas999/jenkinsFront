@@ -20,8 +20,8 @@ pipeline {
        }
         timeout(time: 1, unit: 'HOURS') {
 			      def qg = waitForQualityGate()
-				      if (qg.status != 'OK') {
-                         mail bcc: '', body: 'Pipeline aborted due to quality gate failure: ${qg.status}', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'firas.mhalla@advyteam.com'
+				      if (qg.status == 'OK') {
+                         mail bcc: '', attachLog: true,body: "${currentBuild.result} :  ${BUILD_URL}", compressLog: true, cc: '', from: '', replyTo: '', subject: "Build Notification: ${env.JOB_BASE_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'firas.mhalla@advyteam.com'
    
 					   error "Pipeline aborted due to quality gate failure: ${qg.status}"
 				      }
@@ -34,7 +34,7 @@ pipeline {
 
                     stage('build && test succed  email notification')	{
                         steps{
-                     mail bcc: '', body: ' Your image application is ready', cc: '', from: '', replyTo: '', subject: "${env.JOB_BASE_NAME} - Build N°: ${BUILD_NUMBER}  Successfull", to: 'firas.mhalla@advyteam.com'
+                     mail bcc: '', body: ' Your image application is ready', cc: '', from: '', replyTo: '', subject: " - Build N# ${BUILD_NUMBER}-  Successfull", to: 'firas.mhalla@advyteam.com'
                     }
                  }
    

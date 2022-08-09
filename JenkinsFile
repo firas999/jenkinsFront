@@ -2,14 +2,24 @@
 pipeline {
     agent any
      stages{
+           steps{
+                      script{
     stage ('Install dependency') {
         bat 'npm install'
+    }
+    }
     } 
     stage ('Testing Stage') {
+           steps{
+                      script{
         bat 'npx ng test --no-watch --code-coverage'
+                      }
+           }
     }
     
     stage('Sonar Scanner Coverage') {
+           steps{
+                      script{
        withSonarQubeEnv('sonarserver') { 
         bat "npm run sonar"
        }
@@ -21,6 +31,8 @@ pipeline {
                     		}
 		    	    bat 'echo echo tested succesfully'
     }
+           }
+           }
        stage('build')
                 {
               steps{

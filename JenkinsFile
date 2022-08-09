@@ -10,13 +10,7 @@ pipeline {
     }
     }
     } 
-    stage ('Testing Stage') {
-           steps{
-                      script{
-        bat 'npx ng test --no-watch --code-coverage'
-                      }
-           }
-    }
+   
     
     stage('Sonar Scanner Coverage') {
            steps{
